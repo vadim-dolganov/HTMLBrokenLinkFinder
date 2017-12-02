@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app='AnalysisApp'>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+	<meta name="description" content="Проверка оптимизации сайта, его скорости и ошибки. Возможность самостоятельно оптимизировать свой сайт и провести анализ.">
+	<meta property="og:title" content="Анализ сайта - PR-CY">
+	<meta property="og:description" content="Проверка оптимизации сайта, его скорости и ошибки. Возможность самостоятельно оптимизировать свой сайт и провести анализ.">
+	<meta property="og:image" content="/assets/img/land-analysis-report@2x.png">
+
+
+    
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/img/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/img/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/assets/img/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/img/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/img/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/assets/img/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/assets/img/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/assets/img/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/assets/img/favicon-128.png" sizes="128x128" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/assets/img/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="/assets/img/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="/assets/img/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="/assets/img/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="/assets/img/mstile-310x310.png" />
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="/assets/img/mstile-144x144.png" />
+<meta name="application-name" content="Анализ сайта - PR-CY"/>
+<meta name="referrer" content="unsafe-url">
+    
+
+    <title>Анализ сайта - PR-CY</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?1512045025">    
+  </head>
+  <body ng-controller="RootCtrl">
+    <!-- Google Analytics -->
+    <script>
+      
+      
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96334125-1', 'auto', 'ExtendedTracker');
+      ga('ExtendedTracker.require', 'ec');
+
+      
+	ga('ExtendedTracker.set', 'title', 'Главная: Список избранных и расширенных анализов');
+
+
+              ga('ExtendedTracker.set', 'userId', '176359');
+        ga('ExtendedTracker.set', 'dimension1', '176359');
+            ga('ExtendedTracker.send', 'pageview');
+    </script>
+    <script type='text/javascript'>
+      // Запись кликов по рекламе
+      // Айди, название, объявление, позиция
+      function onPromoClick (id, name, creative, position) {
+        ga('ExtendedTracker.ec:addPromo', {
+          'id': id,
+          'name': name,
+          'creative': creative,
+          'position': position
+        });
+        ga('ExtendedTracker.ec:setAction', 'promo_click');
+        ga('ExtendedTracker.send', 'event', 'Внутренняя реклама', 'Click', name);
+      }
+      // Отправка показов рекламы
+      function onPromoView (id, name, creative, position) {
+        ga('ExtendedTracker.ec:addPromo', {
+          'id': id,
+          'name': name,
+          'creative': creative,
+          'position': position
+        });
+        ga('ExtendedTracker.send', 'event', 'Внутренняя реклама', 'Display', name, {
+          nonInteraction: true
+        });
+      }
+    </script>
+          <!-- Yandex.Metrika counter -->
+      <script type="text/javascript" >
+          (function (d, w, c) {
+              (w[c] = w[c] || []).push(function() {
+                  try {
+                      w.yaCounter30022389 = new Ya.Metrika({
+                          id:30022389,
+                          clickmap:true,
+                          trackLinks:true,
+                          accurateTrackBounce:true,
+                          webvisor:true,
+                          trackHash:true
+                      });
+                  } catch(e) { }
+              });
+
+              var n = d.getElementsByTagName("script")[0],
+                  s = d.createElement("script"),
+                  f = function () { n.parentNode.insertBefore(s, n); };
+              s.type = "text/javascript";
+              s.async = true;
+              s.src = "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/watch.js";
+
+              if (w.opera == "[object Opera]") {
+                  d.addEventListener("DOMContentLoaded", f, false);
+              } else { f(); }
+          })(document, window, "yandex_metrika_callbacks");
+      </script>
+      <noscript><div><img src="https://mc.yandex.ru/watch/30022389" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+      <!-- /Yandex.Metrika counter -->
+      <!-- Yandex.Metrika counter pr-cy --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter22998298 = new Ya.Metrika({ id:22998298, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/22998298" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+        
+      <nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img src="/assets/img/logo.svg" alt="" />
+      </a>
+      <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+        <span class="sr-only">Меню</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-responsive-collapse" uib-collapse="navCollapsed">
+      <ul class="nav navbar-nav navbar-right">
+                  <li uib-dropdown on-toggle="toggled(open)">
+            <a href="#" uib-dropdown-toggle>
+              <img ng-src="//s.pr-cy.ru/userpics/176359_thumb.png" err-src="/assets/img/no-avatar.svg" class="img-circle navbar-avatar" tooltip-placement="left" uib-tooltip="Артем Романов">
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" uib-dropdown-menu>
+              <li><a href="https://id.pr-cy.ru">Мой профиль</a></li>
+              <li><a href="https://id.pr-cy.ru/user/messages/#/list">Личные сообщения</a></li>
+              <li><a href="https://id.pr-cy.ru/user/balance/#/refill">Баланс</a></li>
+              <li class="divider"></li>
+              <li><a href="/signup/logout">Выйти</a></li>
+            </ul>
+          </li>
+              </ul>
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown dropdown-bar" uib-dropdown on-toggle="toggled(open)">
+          <a href="#" uib-dropdown-toggle class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars fa-xs"></i></a>
+          <ul class="dropdown-menu" uib-dropdown-menu>
+            <li role="presentation">
+              <a href="http://pr-cy.ru/"><img src="/assets/img/navbar/prcy.svg"> Портал вебмастеров</a>
+            </li>
+            <li role="presentation">
+              <a href="https://a.pr-cy.ru/"><img src="/assets/img/navbar/analysis.svg"> Анализ сайтов</a>
+            </li>
+            <li role="presentation">
+              <a href="https://sites.pr-cy.ru/"><img src="/assets/img/navbar/sites.svg"> Панель сайтов</a>
+            </li>
+            <li role="presentation">
+              <a href="https://line.pr-cy.ru/"><img src="/assets/img/navbar/line.svg"> Проверка позиций</a>
+            </li>
+            <li role="presentation">
+              <a href="http://pr-cy.ru/sale/"><img src="/assets/img/navbar/sale.svg"> Биржа продажи сайтов</a>
+            </li>
+            <li role="presentation">
+              <a href="https://audit.pr-cy.ru/"><img src="/assets/img/navbar/audit.svg"> Аудит сайтов</a>
+            </li>
+            <li role="presentation">
+              <a href="http://talk.pr-cy.ru/"><img src="/assets/img/navbar/talk.svg"> Форум вебмастеров</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/">Анализ сайта</a></li>
+        <li><a href="/prices/">Тарифы и цены</a></li>
+
+                  <li><a href="/settings/">Настройки</a></li>
+                        <li><a href="/referral/">Партнерская программа</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>    
+    
+    <div class="notify">
+	<div ng-init='alertService.init(null)'>
+		<uib-alert
+			ng-cloak
+			ng-repeat="alert in alerts"
+			type="[[ alert.type ]]"
+			close="alertService.close($index)"
+			dismiss-on-timeout="5000"
+		>
+			<div ng-bind-html="alert.msg"></div>
+		</uib-alert>
+	</div>
+</div>
+    
+	<div ng-controller="AnalysisCtrl">
+		<div class="jumbotron-small">
+			<div class="container">
+				<form id="analysis" class="analysis-form">
+	<div class="input-group input-group-lg">
+		<input type="text" class="form-control" placeholder="Введите сайт, например: site.ru" ng-model="analysis.domain" required />
+
+		<span class="input-group-btn">
+			<button ng-click="analyse()" type="submit" class="btn btn-default"><span class="hidden-xs">Анализировать</span><span class="visible-xs-block">GO</span></button>
+		</span>
+	</div>
+	<span class="input-error" ng-cloak ng-show="analysis.isDomainError"><i class="fa fa-times-circle"></i> Неверный формат доменного имени.</span>
+</form>			</div>
+		</div>
+		<div class="container">
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="favorite-list"
+							ng-cloak
+							ng-controller="AdvancedDomainsCtrl"
+							ctrl-init='{"advancedDomainsLimit":"0","advancedDomains":[]}'
+					>
+						<h2>Расширенные анализы							<span class="badge" ng-if="advancedDomainsCount > 0">[[ advancedDomainsCount ]]/[[ advancedDomainsLimit ]]</span>
+						</h2>
+						<p>Платные расширенные анализы сайтов.</p>
+						<p>
+							<a href="javascript:void(0);" class="btn btn-primary"
+								ng-if="advancedDomainsLimit == 0"
+								ng-click="alertService.add('info', 'Расширенный анализ сайта не доступен в тарифе Бесплатный. Пожалуйста, выберите другой тариф с поддержкой данной опции.');"
+							>
+								Добавить сайт							</a>
+							<a href="javascript:void(0);" class="btn btn-primary"
+								ng-if="advancedDomainsCount == advancedDomainsLimit && advancedDomainsLimit > 0"
+								ng-click="alertService.add('info', 'Достигнуто ограничение на расширенный анализ сайтов для выбранного тарифа Бесплатный. Пожалуйста, выберите другой тариф.');"
+							>
+								Добавить сайт							</a>
+							<a href="javascript:void(0);" class="btn btn-primary"
+								ng-if="advancedDomainsCount < advancedDomainsLimit"
+								ng-click="showAdvacedDomainForm()"
+							>
+								Добавить сайт							</a>
+						</p>
+						<div class="row list">
+							<div class="col-sm-3 item" ng-repeat="domain in advancedDomains">
+								<div class="screen">
+									<a href="[[ lib.url('/advanced/' + domain.decodedDomain + '/') ]]" title="[[ domain.decodedDomain ]]">
+										<img ng-if="domain.screenshot" ng-src="//s3-eu-west-1.amazonaws.com/s3.pr-cy.ru/[[ domain.screenshot ]]" err-src="/assets/img/noscreen.png" width="320" height="240">
+										<img ng-if="!domain.screenshot" src="/assets/img/noscreen.png" width="320" height="240">
+									</a>
+								</div>
+								<div class="domain">
+									<img ng-src="https://www.google.com/s2/favicons?domain=[[ domain.decodedDomain ]]" width="16" height="16">
+									<a href="[[ lib.url('/advanced/' + domain.decodedDomain + '/') ]]">[[ domain.decodedDomain ]]</a>
+								</div>
+
+								<a class="delete"
+									ng-cloak
+									ng-click="deleteAdvanced(domain.domain)"
+									uib-tooltip="Удалить из расширенного анализа"
+									tooltip-placement="top"
+								>
+									<i class="fa fa-times"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="favorite-list"
+							ng-cloak
+							ng-controller="FavoriteDomainsCtrl"
+							ctrl-init='{"favoriteDomains":[]}'
+						>
+						<h2>Избранные сайты</h2>
+						<p>Добавить сайт в избранное можно при анализе сайта.</p>
+						<div class="row list" ng-if="favoriteDomainsCount == 0">
+							<div class="col-sm-3 item">
+								<div class="screen">
+									<div class="link-add"></a><div class="icon-uniE7D2 icon-add"></div></div>
+								</div>
+								<div class="domain">
+									<i class="fa fa-plus-circle"></i>
+									<b>Нет сайтов</b>
+								</div>
+							</div>
+						</div>
+						<div class="row list" ng-if="favoriteDomainsCount > 0">
+							<div class="col-sm-3 item" ng-repeat="domain in favoriteDomains">
+								<div class="screen">
+									<a href="[[ lib.url('/' + domain.decodedDomain + '/') ]]" title="[[ domain.decodedDomain ]]">
+										<img ng-if="domain.screenshot" ng-src="//s3-eu-west-1.amazonaws.com/s3.pr-cy.ru/[[ domain.screenshot ]]" err-src="/assets/img/noscreen.png">
+										<img ng-if="!domain.screenshot" src="/assets/img/noscreen.png">
+									</a>
+								</div>
+								<div class="domain">
+									<img ng-src="https://www.google.com/s2/favicons?domain=[[ domain.decodedDomain ]]" width="16" height="16">
+									<a href="[[ lib.url('/' + domain.decodedDomain + '/') ]]">[[ domain.decodedDomain ]]</a>
+								</div>
+								<a
+									class="delete"
+									ng-cloak
+									ng-click="deleteFavorite(domain.domain)"
+									uib-tooltip="Удалить из избранного"
+									tooltip-placement="top"
+								>
+									<i class="fa fa-times"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+    
+      <footer class="footer-page">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7 col-xs-7">
+              <ul class="footer-page__social">
+                <li>
+                  <a href="http://vk.com/prcyru" target="_blank" rel="nofollow">
+                    <svg class="footer-page__svg" viewBox="0 0 32 32" width="32" heigth="32">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/social-footer-icons.svg#icon-vk"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://www.facebook.com/prcyru" target="_blank" rel="nofollow">
+                    <svg class="footer-page__svg" viewBox="0 0 32 32" width="32" heigth="32">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/social-footer-icons.svg#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://twitter.com/prcyru" target="_blank" rel="nofollow">
+                    <svg class="footer-page__svg" viewBox="0 0 32 32" width="32" heigth="32">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/social-footer-icons.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://plus.google.com/+prcyru" target="_blank" rel="nofollow">
+                    <svg class="footer-page__svg" viewBox="0 0 32 32" width="32" heigth="32">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/img/social-footer-icons.svg#icon-google"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="footer-page__links">
+                <li><a href="/">Анализ сайта</a></li>
+                <li><a href="/prices/">Тарифы и цены</a></li>
+                <li><a href="http://pr-cy.ru/support/">Поддержка</a></li>
+                <li><a href="http://pr-cy.ru/disclaimer/">Соглашение</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-5 col-xs-5">
+              <div class="footer-page__login">
+                                  <a href="/signup/logout" class="btn btn-gray"><i class="fa fa-unlock-alt text-white"></i> Выход</a>
+                              </div>
+
+              <div class="footer-page__copyright">© PR-CY, <br class="visible-xs-block">2006—2017</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    
+    
+	
+      <script type="text/javascript">
+        var useSsl = 1;
+        var webHost = 'a.pr-cy.ru';
+        var fsHost = 's.pr-cy.ru';
+        var currentLanguage = 'ru';
+        var defaultLanguage = 'ru';
+      </script>
+              <script type="text/javascript" src="/assets/js/main.min.js?1512045025"></script>            <script type="text/javascript" src="/assets/bower_components/angular-i18n/angular-locale_ru-ru.js?1512045025"></script>
+    
+	<script type="text/ng-template" id="advacedDomainForm">
+		<div class="modal-header">
+			<button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+			<h3 class="modal-title">Расширенный анализ</h3>
+		</div>
+		<div class="modal-body">
+			<div class="input-group input-group-lg">
+				<input id="advancedDomainInput" type="text" class="form-control" placeholder="Введите сайт, например: site.ru" required=""
+					ng-model="advancedDomainName"
+					ng-keydown="$event.which === 13 && advancedDomainName && ok()"
+				>
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-success"
+						ng-click="ok()"
+						ng-disabled="!advancedDomainName"
+					>Добавить</button>
+				</span>
+			</div>
+		</div>
+	</script>
+
+</body>
+</html>
