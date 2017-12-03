@@ -50,7 +50,7 @@ public class LinkFinder {
         Map<ATTRIBUTE, Elements> mapTags = getTags();
         for(Map.Entry<ATTRIBUTE, Elements> entry : mapTags.entrySet()) {
             for(Element tag : entry.getValue()) {
-                links.add(tag.attr(ATTRIBUTES.get(entry.getKey())));
+                links.add(tag.attr("abs:" + ATTRIBUTES.get(entry.getKey())));
             }
         }
         return links;
