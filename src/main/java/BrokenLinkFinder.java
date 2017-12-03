@@ -23,7 +23,7 @@ public class BrokenLinkFinder {
     }
 
     private Boolean isBrokenLink(Integer statusCode) {
-        return !HTTPStatusCode.OK.equals(statusCode);
+        return ((statusCode < SuccessfulStatusCode.MIN_VALUE) || (statusCode > SuccessfulStatusCode.MAX_VALUE));
     }
 
     public Map<String, Integer> getBrokenLinks() throws IOException {
