@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) {
         try {
             LinkFinder linkFinder = new LinkFinder();
-            List<String> links = linkFinder.getLinks("index.html");
+            List<String> links = linkFinder.getLinks("http://ya.ru/");
             printLinks(links);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
