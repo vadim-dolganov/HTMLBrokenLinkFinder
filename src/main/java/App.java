@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class App {
     public static void printLinks(List<String> links) {
@@ -18,11 +19,14 @@ public class App {
     public static void main(String[] args) {
         try {
             LinkFinder linkFinder = new LinkFinder();
-            List<String> links = linkFinder.getLinks("http://testingcourse.ru/docs/site-status-check");
-            BrokenLinkFinder brokenLinkFinder = new BrokenLinkFinder(links);
-            Map<String, Integer> brokenLinks = brokenLinkFinder.getBrokenLinks();
-            printLinks(links);
-            printBrokenLinks(brokenLinks);
+            InputReader reader = new InputReader(args);
+            ReportWriter writer = new ReportWriter(reader.getOutputFile());
+            for (String page : reader.getPages()) {
+                List<String> links = linkFinder.getLinks(page);
+                BrokenLinkFinder brokenLinkFinder = new BrokenLinkFinder(links);
+                Map<String, Integer> brokenLinks = brokenLinkFinder.getBrokenLinks();
+                writer.append(brokenLinks);
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
