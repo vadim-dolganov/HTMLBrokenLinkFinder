@@ -25,15 +25,8 @@ public class LinkFinder {
         put(ATTRIBUTE.SRC, "src");
     }};
 
-    private void openDocument(String link) throws IOException {
-        final Integer TIMEOUT = 10000;
-        Connection connection = Jsoup.connect(link)
-                .ignoreContentType(true)
-                .timeout(TIMEOUT)
-                .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
-                .referrer("http://www.google.com")
-                .ignoreHttpErrors(true);
-        document = connection.get();
+    private void openDocument(String htmlFileName) throws IOException {
+        document = Jsoup.parse(new File(htmlFileName), null);
     }
 
     private Map<ATTRIBUTE, Elements> getTags() {
