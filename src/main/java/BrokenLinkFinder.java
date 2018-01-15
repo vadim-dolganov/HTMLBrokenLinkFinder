@@ -2,6 +2,7 @@ import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,8 @@ public class BrokenLinkFinder {
         return ((statusCode < SuccessfulStatusCode.MIN_VALUE) || (statusCode > SuccessfulStatusCode.MAX_VALUE));
     }
 
-    public Map<String, Integer> getBrokenLinks() throws IOException {
-        Map<String, Integer> brokenLinks = new LinkedHashMap<String, Integer>();
+    public HashMap<String, Integer> getBrokenLinks() throws IOException {
+        HashMap<String, Integer> brokenLinks = new HashMap<String, Integer>();
         for (String link : links) {
             Integer statusCode = getStatusCode(link);
             if (isBrokenLink(statusCode)) {

@@ -1,32 +1,32 @@
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class App {
-    public static void printLinks(List<String> links) {
-        System.out.println("LINKS");
-        for(String link : links) {
-            System.out.println(link);
+    private static HashMap<String, Integer> getBrokenLinks(List<String> pages) throws IOException {
+        HashMap<String, Integer> brokenLinks = new HashMap<String, Integer>();
+        LinkFinder linkFinder = new LinkFinder();
+        for (String page : pages) {
+            List<String> links = linkFinder.getLinks(page);
+            BrokenLinkFinder brokenLinkFinder = new BrokenLinkFinder(links);
+            brokenLinks.putAll(brokenLinkFinder.getBrokenLinks());
         }
+        return brokenLinks;
     }
-    public static void printBrokenLinks(Map<String, Integer> brokenLinks) {
-        System.out.println("BROKEN-LINKS");
-        for(Map.Entry<String, Integer> brokenLink : brokenLinks.entrySet()) {
-            System.out.println(brokenLink.getKey());
-        }
+
+    private static void printBrokenLinks(HashMap<String, Integer> brokenLinks, String outputFile) throws FileNotFoundException {
+        System.out.println(brokenLinks);
+        ReportWriter writer = new ReportWriter(outputFile);
+        writer.append(brokenLinks);
     }
+
     public static void main(String[] args) {
         try {
-            LinkFinder linkFinder = new LinkFinder();
             InputReader reader = new InputReader(args);
-            ReportWriter writer = new ReportWriter(reader.getOutputFile());
-            for (String page : reader.getPages()) {
-                List<String> links = linkFinder.getLinks(page);
-                BrokenLinkFinder brokenLinkFinder = new BrokenLinkFinder(links);
-                Map<String, Integer> brokenLinks = brokenLinkFinder.getBrokenLinks();
-                writer.append(brokenLinks);
-            }
+            HashMap<String, Integer> brokenLinks = getBrokenLinks(reader.getPages());
+            printBrokenLinks(brokenLinks, reader.getOutputFile());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

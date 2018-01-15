@@ -1,16 +1,16 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ReportWriter {
     public ReportWriter(String filename) throws FileNotFoundException {
         this.writer = new PrintWriter(new File(filename));
-        this.builder = new StringBuilder();
     }
-    public void append(Map<String, Integer> brokenLinks) {
-        for(Map.Entry<String, Integer> brokenLink : brokenLinks.entrySet()) {
-          //  System.out.println(brokenLink.getKey() + " :" + brokenLink.getValue());
+    public void append(HashMap<String, Integer> brokenLinks) {
+        for(HashMap.Entry<String, Integer> brokenLink : brokenLinks.entrySet()) {
+            StringBuilder builder = new StringBuilder();
             builder.append(brokenLink.getKey());
             builder.append(';');
             builder.append(brokenLink.getValue());
@@ -25,5 +25,4 @@ public class ReportWriter {
         this.writer.close();
     }
     private PrintWriter writer;
-    private StringBuilder builder;
 }
