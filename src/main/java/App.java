@@ -1,11 +1,9 @@
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class App {
-    private static HashMap<String, Integer> getBrokenLinks(List<String> pages) throws IOException {
+    private static HashMap<String, Integer> getBrokenLinks(List<String> pages) throws Exception {
         HashMap<String, Integer> brokenLinks = new HashMap<String, Integer>();
         LinkFinder linkFinder = new LinkFinder();
         for (String page : pages) {
@@ -17,7 +15,6 @@ public class App {
     }
 
     private static void printBrokenLinks(HashMap<String, Integer> brokenLinks, String outputFile) throws FileNotFoundException {
-        System.out.println(brokenLinks);
         ReportWriter writer = new ReportWriter(outputFile);
         writer.append(brokenLinks);
     }

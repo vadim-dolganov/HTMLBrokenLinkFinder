@@ -1,11 +1,13 @@
+import javafx.util.Pair;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class BrokenLinkFinder {
     public BrokenLinkFinder(List<String> links) {
@@ -13,26 +15,30 @@ public class BrokenLinkFinder {
     }
 
     private List<String> links;
+    private final Integer THREADS_COUNT = 30;
 
-    private static Integer getStatusCode(String url) throws IOException {
-        Response response = Jsoup.connect(url)
-                .ignoreContentType(true)
-                .ignoreHttpErrors(true)
-                .followRedirects(false)
-                .execute();
-        return response.statusCode();
-    }
 
     private Boolean isBrokenLink(Integer statusCode) {
         return ((statusCode < SuccessfulStatusCode.MIN_VALUE) || (statusCode > SuccessfulStatusCode.MAX_VALUE));
     }
 
-    public HashMap<String, Integer> getBrokenLinks() throws IOException {
+    public HashMap<String, Integer> getBrokenLinks() throws IOException, InterruptedException, ExecutionException {
+        final ExecutorService service = Executors.newFixedThreadPool(THREADS_COUNT);
         HashMap<String, Integer> brokenLinks = new HashMap<String, Integer>();
+
+        List<HttpCall> httpCalls = new ArrayList<HttpCall>();
+
         for (String link : links) {
-            Integer statusCode = getStatusCode(link);
-            if (isBrokenLink(statusCode)) {
-                brokenLinks.put(link, statusCode);
+            httpCalls.add(new HttpCall(link));
+        }
+
+        List<Future<Pair<String, Integer>>> httpCallsResult = service.invokeAll(httpCalls);
+        service.shutdown();
+
+        for (final Future<Pair<String, Integer>> callResult : httpCallsResult) {
+            Pair<String, Integer> httpResult = callResult.get();
+            if(isBrokenLink(httpResult.getValue())) {
+                brokenLinks.put(httpResult.getKey(), httpResult.getValue());
             }
         }
         return brokenLinks;

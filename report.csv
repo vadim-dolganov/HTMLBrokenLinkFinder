@@ -1,4 +1,8 @@
-http://oauth.vk.com/authorize?client_id=5579528&redirect_uri=http://reshuvsem.ru/handler/vk_auth.php&response_type=code;301;Code
-http://reshuvsem.ru/../js/answer_ajax.js;400;Code
-http://reshuvsem.ru/../img/loading.gif;400;Code
-https://mc.yandex.ru/watch/39889755;302;Code
+https://avatars0.githubusercontent.com;404;Code
+https://avatars1.githubusercontent.com;404;Code
+https://avatars3.githubusercontent.com;404;Code
+https://assets-cdn.github.com/;403;Code
+https://assets-cdn.github.com;403;Code
+https://user-images.githubusercontent.com/;403;Code
+https://github-cloud.s3.amazonaws.com;403;Code
+https://avatars2.githubusercontent.com;404;Code

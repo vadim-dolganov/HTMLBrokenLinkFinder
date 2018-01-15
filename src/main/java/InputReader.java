@@ -11,7 +11,6 @@ enum READ_MODE {
 
 public class InputReader {
     public InputReader(String args[]) {
-     //   String[] splitedInput = input.split("\\s+");
         READ_MODE currentMode = READ_MODE.NOTHING;
         for (String element : args) {
             if (element.equals("--files")) {

@@ -20,6 +20,7 @@ public class ReportWriter {
             this.writer.write(builder.toString());
             this.writer.flush();
         }
+        finalize();
     }
     protected void finalize() {
         this.writer.close();
