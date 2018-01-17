@@ -12,6 +12,7 @@ enum READ_MODE {
 public class InputReader {
     public InputReader(String args[]) {
         READ_MODE currentMode = READ_MODE.NOTHING;
+        Boolean isNotFullInput = true;
         for (String element : args) {
             if (element.equals("--files")) {
                 currentMode = READ_MODE.FILES;
@@ -28,12 +29,16 @@ public class InputReader {
                 }
                 case OUT: {
                     this.outputFile = element;
+                    isNotFullInput = false;
                     continue;
                 }
                 case NOTHING: {
                     throw new IllegalArgumentException("Invalid input string");
                 }
             }
+        }
+        if (isNotFullInput) {
+            throw new IllegalArgumentException("Not full input");
         }
     }
     public List<String> getPages() {

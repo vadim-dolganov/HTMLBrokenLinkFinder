@@ -1,0 +1,2 @@
+test.com;500;Code
+test.ru;404;Code

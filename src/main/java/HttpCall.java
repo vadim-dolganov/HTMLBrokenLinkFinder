@@ -12,6 +12,8 @@ public class HttpCall implements Callable<Pair<String, Integer>> {
         this.url = url;
     }
 
+    public String getUrl() { return this.url; }
+
     private Integer getStatusCode() throws IOException {
         final Integer MAX_TIMEOUT = 10000;
         Connection.Response response = Jsoup.connect(this.url)

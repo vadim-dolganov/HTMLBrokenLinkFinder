@@ -22,6 +22,10 @@ public class BrokenLinkFinder {
         return ((statusCode < SuccessfulStatusCode.MIN_VALUE) || (statusCode > SuccessfulStatusCode.MAX_VALUE));
     }
 
+    public List<String> getLinks() {
+        return this.links;
+    }
+
     public HashMap<String, Integer> getBrokenLinks() throws IOException, InterruptedException, ExecutionException {
         final ExecutorService service = Executors.newFixedThreadPool(THREADS_COUNT);
         HashMap<String, Integer> brokenLinks = new HashMap<String, Integer>();
