@@ -1,25 +1,19 @@
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+package Handler;
 
-enum READ_MODE {
-    NOTHING,
-    FILES,
-    OUT
-}
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputReader {
     public InputReader(String args[]) {
-        READ_MODE currentMode = READ_MODE.NOTHING;
+        ReadMode currentMode = ReadMode.NOTHING;
         Boolean isNotFullInput = true;
         for (String element : args) {
             if (element.equals("--files")) {
-                currentMode = READ_MODE.FILES;
+                currentMode = ReadMode.FILES;
                 continue;
             }
             else if (element.equals("--out")) {
-                currentMode = READ_MODE.OUT;
+                currentMode = ReadMode.OUT;
                 continue;
             }
             switch (currentMode) {

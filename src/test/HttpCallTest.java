@@ -1,6 +1,11 @@
 
 import static org.junit.Assert.*;
 
+import RequestSender.HttpCall;
+import RequestSender.Response;
+import javafx.util.Pair;
+import org.junit.Test;
+
 import javafx.util.Pair;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -18,31 +23,22 @@ public class HttpCallTest {
     @Test
     public void checkStatusCodeFromValidUrl() throws Exception {
         String url = "https://www.google.ru";
-        Pair<String, Integer> response = new Pair<String, Integer>(url, 200);
+        Response response = new Response(url, 200, "OK");
         HttpCall httpCall = new HttpCall(url);
         assertEquals(response, httpCall.call());
     }
 
-    @Test(expected = UnknownHostException.class)
+    @Test()
     public void checkStatusCodeFromNotExistHost() throws Exception {
         String url = "http://notexistsite.ru/";
         HttpCall httpCall = new HttpCall(url);
-        httpCall.call();
+        assertEquals(httpCall.call(), new Response(url, 400, "Bad request"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test()
     public void checkStatusCodeFromEmptyUrl() throws Exception {
         String url = "";
         HttpCall httpCall = new HttpCall(url);
-        httpCall.call();
+        assertEquals(httpCall.call(), new Response(url, 400, "Bad request"));
     }
-
-    @Test
-    public void check404StatusCode() throws Exception {
-        String url = "http://google.com/test/";
-        Pair<String, Integer> response = new Pair<String, Integer>(url, 404);
-        HttpCall httpCall = new HttpCall(url);
-        assertEquals(response, httpCall.call());
-    }
-
 }

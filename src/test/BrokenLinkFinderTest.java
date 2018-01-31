@@ -1,3 +1,6 @@
+
+import LinkFinder.BrokenLinkFinder;
+import RequestSender.Response;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -32,8 +35,8 @@ public class BrokenLinkFinderTest {
         links.add("https://jsoup.org/apidocs/org/jsoup/Jsoup.html");
         links.add("https://jsoup.org/apidocs/org/jsoup/hello.html");
         BrokenLinkFinder finder = new BrokenLinkFinder(links);
-        HashMap<String, Integer> expected = new HashMap<String, Integer>();
-        expected.put("https://jsoup.org/apidocs/org/jsoup/hello.html", 404);
+        List<Response> expected = new ArrayList<Response>();
+        expected.add(new Response("https://jsoup.org/apidocs/org/jsoup/hello.html", 404, "Not Found"));
         assertEquals(finder.getBrokenLinks(), expected );
     }
 }

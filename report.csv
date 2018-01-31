@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+https://www.taxii.com/;400;Bad request
+=======
 https://avatars0.githubusercontent.com;404;Code
 https://avatars1.githubusercontent.com;404;Code
 https://avatars3.githubusercontent.com;404;Code
@@ -6,3 +9,4 @@ https://assets-cdn.github.com;403;Code
 https://user-images.githubusercontent.com/;403;Code
 https://github-cloud.s3.amazonaws.com;403;Code
 https://avatars2.githubusercontent.com;404;Code
+>>>>>>> f033d16e3299d1d84209f181b1a2da3c36bed08c

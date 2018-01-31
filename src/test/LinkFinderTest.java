@@ -1,3 +1,9 @@
+
+import LinkFinder.LinkFinder;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.List;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -32,14 +38,7 @@ public class LinkFinderTest {
         assertEquals(returnValue.get(4), "http://www.enable-javascript.com/ru/");
         assertEquals(returnValue.get(5), "http://bebras.ru/bebras17/login");
     }
-
-    @Test
-    public void checkGetTagsFunctionalWithFileProtocol() throws IOException {
-        LinkFinder finder = new LinkFinder();
-        List<String> returnValue = finder.getLinks("testFiles\\test.html");
-        assertEquals(returnValue.get(0), "http://bebras.ru/assets/images/favicon.bebras.png?24");
-        assertEquals(returnValue.get(1), "http://bebras.ru/assets/stylesheets/reset.css?24");
-    }
+    
 
     @Test
     public void getTagsCheckWithEmptyInput() throws IOException {

@@ -1,3 +1,5 @@
+
+import Handler.InputReader;
 import org.junit.Test;
 
 public class InputReaderTest {
